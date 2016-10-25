@@ -9,5 +9,4 @@ WORKDIR /opt/python
 COPY start.sh /
 COPY selector.py /opt/python/
 COPY lib/*.py /opt/python/lib/
-WORKDIR /opt/python
 ENTRYPOINT ["/start.sh"]
