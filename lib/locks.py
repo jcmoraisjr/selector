@@ -6,10 +6,13 @@ ID = "id"
 class Locks:
     def __init__(s, lockFileName):
         s.lockFileName = lockFileName
+        s.mutex = multiprocessing.Lock()
+        s.clean()
+
+    def clean(s):
         s.lockData = None
         s.lockClusters = None
         s.nextId = None
-        s.mutex = multiprocessing.Lock()
 
     def acquire(s):
         s.mutex.acquire()
@@ -30,7 +33,7 @@ class Locks:
             json.dump(s.lockData, lockFile)
 
     def release(s):
-        s.lockData = None
+        s.clean()
         s.mutex.release()
 
     def strNextId(s):
