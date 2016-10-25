@@ -8,7 +8,7 @@ Concurrently and temporarily share the same clusters of resources between consum
 
 Running the service as a Docker container:
 
-    docker run -p 8000:8000 quay.io/jcmoraisjr/selector \
+    docker run -d -p 8000:8000 quay.io/jcmoraisjr/selector \
       --clusters-inline='{"cl":["res1","res2","res3"]}'
 
 Running the server outside Docker. Clone this repository and:
@@ -23,7 +23,7 @@ Output:
 
     {"status": "ok", "items": ["res1"], "id": "id1"}
 
-Release the resources back to the cluster:
+Release the resource(s) back to the cluster:
 
     curl -id'{"id":"id1"}' localhost:8000/release
 
