@@ -1,4 +1,4 @@
-import signal, threading, json, BaseHTTPServer
+import json, BaseHTTPServer
 
 class Server:
     def __init__(s, clustersRef, locksRef):
@@ -7,9 +7,8 @@ class Server:
         locks = locksRef
 
     def listen(s, port):
-        global server
-        server = BaseHTTPServer.HTTPServer(('', port), RequestHandler)
-        server.serve_forever()
+        s.server = BaseHTTPServer.HTTPServer(('', port), RequestHandler)
+        s.server.serve_forever()
 
 class RequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     def do_GET(s):
