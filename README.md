@@ -82,7 +82,7 @@ Deploy this systemd unit. Change the `--clusters-inline` info or mount and point
     [Install]
     WantedBy=multi-user.target
 
-#Whishlist
+#Wishlist
 
 * Query used resources
 * Define an amount of time to wait until a resource is available
